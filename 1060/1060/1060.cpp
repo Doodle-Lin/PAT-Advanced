@@ -7,7 +7,7 @@ int n;
 string deal(string a, int &e) {
 	while (a[0] == '0'&&a.length() > 0) {
 		a.erase(a.begin());
-	}
+	}//将前导零删除
 	if (a[0]=='.')
 	{
 		a.erase(a.begin());
@@ -16,7 +16,7 @@ string deal(string a, int &e) {
 			a.erase(a.begin());
 			e--;
 		}
-	}
+	}//如果是小数，删除小数点，继续删除小数点后的0直到第一位非零位，每删去一个0将指数减1
 	else
 	{
 		for (string::iterator it = a.begin(); it!=a.end(); it++)
@@ -28,11 +28,11 @@ string deal(string a, int &e) {
 			}
 			e++;
 		}
-	}
+	}//如果大于0，小数点前有几位就代表指数自加几次，等价于将小数点调整到首位，并删除小数点
 	if (a.length() == 0)
 	{
 		e = 0;
-	}
+	}//若string长度归零，说明该字符串全为0
 	int num = 0;
 	int i = 0;
 	string res;
@@ -49,7 +49,7 @@ string deal(string a, int &e) {
 		
 		i++;
 		num++;
-	}
+	}//取前n位,不够补零
 	return res;
 }
 int main() {
