@@ -288,6 +288,6 @@ __pycache__/
 *.xsd.cs
 
 # Visual Studio 2017 Files
-*.sln
-*.vcxproj
-*.vcxproj.filters
+#*.sln
+#*.vcxproj
+#*.vcxproj.filters

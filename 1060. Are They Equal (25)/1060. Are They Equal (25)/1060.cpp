@@ -8,7 +8,7 @@ string deal(string a, int &e) {
 	while (a[0] == '0'&&a.length() > 0) {
 		a.erase(a.begin());
 	}//将前导零删除
-	if (a[0]=='.')
+	if (a[0] == '.')
 	{
 		a.erase(a.begin());
 		while (a[0] == '0'&&a.length()>0)
@@ -19,9 +19,9 @@ string deal(string a, int &e) {
 	}//如果是小数，删除小数点，继续删除小数点后的0直到第一位非零位，每删去一个0将指数减1
 	else
 	{
-		for (string::iterator it = a.begin(); it!=a.end(); it++)
+		for (string::iterator it = a.begin(); it != a.end(); it++)
 		{
-			if (*it=='.')
+			if (*it == '.')
 			{
 				a.erase(it);
 				break;
@@ -46,15 +46,15 @@ string deal(string a, int &e) {
 		{
 			res += '0';
 		}
-		
+
 		i++;
 		num++;
 	}//取前n位,不够补零
 	return res;
 }
 int main() {
-	string s1, s2,s11,s22;
-	int e1=0, e2=0;
+	string s1, s2, s11, s22;
+	int e1 = 0, e2 = 0;
 	cin >> n >> s1 >> s2;
 	s11 = deal(s1, e1);
 	s22 = deal(s2, e2);

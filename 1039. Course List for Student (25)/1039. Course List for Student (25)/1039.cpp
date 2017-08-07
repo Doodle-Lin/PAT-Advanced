@@ -5,7 +5,7 @@
 #include <algorithm>
 using namespace std;
 
-vector<int> hashTable[26 * 26 * 26*10 + 1];
+vector<int> hashTable[26 * 26 * 26 * 10 + 1];
 //int hashFunc(string a) {
 //	int id=0;
 //	for (int i = 0; i < a.length()-1; i++)
@@ -28,7 +28,7 @@ int hashFunc(char a[]) {
 	return id;
 }
 int main() {
-	int m, n,coun,stun,id;
+	int m, n, coun, stun, id;
 	char temp[4];
 	//vector<char*> stu;
 	//太多余了，无需使用vector存储学生姓名，输入一个输出一个即可，也可以全部输入依次输出，scanf可以等待程序运行
@@ -48,7 +48,7 @@ int main() {
 			hashTable[id].push_back(coun);
 		}
 	}
-	for (int k = 0; k < m ;k++)
+	for (int k = 0; k < m; k++)
 	{
 		//cout << *it1 ;
 		scanf("%s", temp);
@@ -65,7 +65,7 @@ int main() {
 			//cout << " " << hashTable[id].size();
 			printf(" %d", hashTable[id].size());
 		}
-		for (vector<int>::iterator it2=hashTable[id].begin(); it2!=hashTable[id].end(); it2++)
+		for (vector<int>::iterator it2 = hashTable[id].begin(); it2 != hashTable[id].end(); it2++)
 		{
 			//cout <<" "<< *it2;
 			printf(" %d", *it2);
