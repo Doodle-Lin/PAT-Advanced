@@ -1,27 +1,33 @@
-#include <set>
+#include <unordered_set>
 #include <vector>
 #include <cstdio>
 
 using namespace std;
 
-vector<set<int> > sets;
+const int maxn = 50;
 
-double setCmp(set<int> a, set<int> b) {
-	int n=0, m=0;
-	set<int> c=b;
-	for (set<int>::iterator it = a.begin(); it != a.end(); it++)
+unordered_set<int> sets[maxn];
+
+double setCmp(int a, int b) {//注意，不要将set整体作为参数传入，极大影响运行速度，会导致超时
+	int n=0, m=sets[b].size();
+	//unordered_set<int> c=b;
+	for (unordered_set<int>::iterator it = sets[a].begin(); it != sets[a].end(); it++)
 	{
-		if (b.find(*it) != b.end())
+		if (sets[b].find(*it) != sets[b].end()) 
+		{
 			n++;
-		c.insert(*it);
+		}
+		else
+		{
+			m++;
+		}
 	}
-	m = c.size();
 	return (double)n / (double)m;
 }
 int main() {
 	int n,m,temp,a,b;
 	double res;
-	set<int> setTemp;
+	//unordered_set<int> setTemp;
 	bool ismin;
 	scanf("%d", &n);
 	for (int i = 0; i < n; i++)
@@ -30,10 +36,11 @@ int main() {
 		for (int j = 0; j < m; j++)
 		{
 			scanf("%d", &temp);
-			setTemp.insert(temp);
+			sets[i].insert(temp);
 		}
-		sets.push_back(setTemp);
-		setTemp.clear();
+		/*sets[i] = setTemp;
+		setTemp.clear();*/
+		//这段代码多此一举
 	}
 	scanf("%d",&n);
 	for (int i = 0; i < n; i++)
@@ -42,11 +49,11 @@ int main() {
 		ismin = sets[a-1].size() < sets[b-1].size() ? true : false;
 		if (ismin)
 		{
-			res=setCmp(sets[a-1], sets[b-1]);
+			res=setCmp(a-1, b-1);
 		}
 		else
 		{
-			res=setCmp(sets[b-1], sets[a-1]);
+			res=setCmp(b-1, a-1);
 		}
 		printf("%3.1f%\n", 100 * res);
 	}
