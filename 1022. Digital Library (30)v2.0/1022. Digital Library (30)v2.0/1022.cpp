@@ -31,7 +31,6 @@ int main() {
 	char c='\0';
 	string title, author, key, pub, year,str;
 	scanf("%d", &n);
-	getchar();
 	while (n--)
 	{
 		scanf("%d", &id);
