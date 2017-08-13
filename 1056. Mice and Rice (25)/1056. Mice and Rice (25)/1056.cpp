@@ -11,7 +11,7 @@ struct mice
 queue<int> q;
 int main()
 {
-	int np, ng,temp,group;
+	int np, ng, temp, group;
 	scanf("%d%d", &np, &ng);
 	for (int i = 0; i < np; i++)
 	{
@@ -23,11 +23,11 @@ int main()
 		q.push(temp);
 	}
 	temp = np;
-	while (q.size()!=1)
+	while (q.size() != 1)
 	{
 		if (temp%ng == 0)
 		{
-			group =temp/ ng;
+			group = temp / ng;
 		}
 		else
 		{
@@ -38,7 +38,7 @@ int main()
 			int k = q.front();
 			for (int j = 0; j < ng; j++)
 			{
-				if (i*ng+j>=temp)
+				if (i*ng + j >= temp)
 				{
 					break;
 				}
@@ -47,7 +47,7 @@ int main()
 				{
 					k = front;
 				}
-				mice[front].rank = group+1;
+				mice[front].rank = group + 1;
 				q.pop();
 			}
 			q.push(k);
@@ -58,11 +58,11 @@ int main()
 	for (int i = 0; i < np; i++)
 	{
 		printf("%d", mice[i].rank);
-		if (i<np-1)
+		if (i<np - 1)
 		{
 			printf(" ");
 		}
 	}
-    return 0;
+	return 0;
 }
 
