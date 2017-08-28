@@ -1,12 +1,27 @@
-#include <algorithm>
 #include <cstdio>
+#include <algorithm>
 using namespace std;
+int m;
 struct node
 {
 	int data, height;
-	node* lchild, *rchild;
+	node* lchild;
+	node* rchild;
 }*root;
-int m;
+int geth(node* root) {
+	if (root==NULL)
+	{
+		return 0;
+	}
+	return root->height;
+}
+void updateh(node* root) {
+	root->height = max(geth(root->lchild), geth(root->rchild))+1;
+	return;
+}
+int getb(node* root){
+	return geth(root->lchild) - geth(root->rchild);
+}
 node* newnode(int v) {
 	node* root = new node;
 	root->data = v;
@@ -14,38 +29,23 @@ node* newnode(int v) {
 	root->lchild = root->rchild = NULL;
 	return root;
 }
-int getheight(node* root) {
-	if (root==NULL)
-	{
-		return 0;
-	}
-	else
-	{
-		return root->height;
-	}
-}
-void updateheight(node* root) {
-	root->height = max(getheight(root->lchild), getheight(root->rchild)) + 1;
-	return;
-}
-int getbalance(node* root) {
-	return getheight(root->lchild) - getheight(root->rchild);
-}
 void R(node* &root) {
 	node* temp = root->lchild;
 	root->lchild = temp->rchild;
 	temp->rchild = root;
-	updateheight(root);
-	updateheight(temp);
+	updateh(root);
+	updateh(temp);
 	root = temp;
+	return;
 }
 void L(node* &root) {
 	node* temp = root->rchild;
 	root->rchild = temp->lchild;
 	temp->lchild = root;
-	updateheight(root);
-	updateheight(temp);
+	updateh(root);
+	updateh(temp);
 	root = temp;
+	return;
 }
 void insert(node* &root, int x) {
 	if (root==NULL)
@@ -56,12 +56,14 @@ void insert(node* &root, int x) {
 	if (x<root->data)
 	{
 		insert(root->lchild, x);
-		updateheight(root);
-		if (getbalance(root)==2)
+		updateh(root);
+		if (getb(root)==2)
 		{
-			if (getbalance(root->lchild) == 1)
+			if (getb(root->lchild)==1)
+			{
 				R(root);
-			else if (getbalance(root->lchild)==-1)
+			}
+			else if (getb(root->lchild)==-1)
 			{
 				L(root->lchild);
 				R(root);
@@ -71,17 +73,20 @@ void insert(node* &root, int x) {
 	else
 	{
 		insert(root->rchild, x);
-		updateheight(root);
-		if (getbalance(root) == -2)
+		updateh(root);
+		if (getb(root) == -2)
 		{
-			if (getbalance(root->rchild) == -1)
+			if (getb(root->rchild) == -1)
+			{
 				L(root);
-			else if (getbalance(root->rchild) == 1)
+			}
+			else if (getb(root->rchild) == 1)
 			{
 				R(root->rchild);
 				L(root);
 			}
 		}
+
 	}
 }
 node* create(int data[]) {
@@ -99,7 +104,7 @@ int main() {
 	{
 		scanf("%d", &data[i]);
 	}
-	node* res=create(data);
-	printf("%d", res->data);
+	node* root = create(data);
+	printf("%d", root->data);
 	return 0;
 }
