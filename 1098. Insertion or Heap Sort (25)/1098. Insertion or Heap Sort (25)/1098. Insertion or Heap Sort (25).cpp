@@ -21,7 +21,7 @@ void downadjust(int low, int high) {
 		return;
 	}
 	int temp = 2 * low;
-	if (temp+1<=high&&heap[temp+1-1]>heap[temp-1])
+	if (temp+1<=high&=&heap[temp+1-1]>heap[temp-1])
 	{
 		temp += 1;
 	}
