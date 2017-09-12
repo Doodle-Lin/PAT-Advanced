@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1003. Emergency (25)(Bellman-Ford)", "1003. Emergency (25)(Bellman-Ford)\1003. Emergency (25)(Bellman-Ford).vcxproj", "{06EC4985-0514-463F-8088-01CDDED539FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06EC4985-0514-463F-8088-01CDDED539FA}.Debug|x64.ActiveCfg = Debug|x64
+		{06EC4985-0514-463F-8088-01CDDED539FA}.Debug|x64.Build.0 = Debug|x64
+		{06EC4985-0514-463F-8088-01CDDED539FA}.Debug|x86.ActiveCfg = Debug|Win32
+		{06EC4985-0514-463F-8088-01CDDED539FA}.Debug|x86.Build.0 = Debug|Win32
+		{06EC4985-0514-463F-8088-01CDDED539FA}.Release|x64.ActiveCfg = Release|x64
+		{06EC4985-0514-463F-8088-01CDDED539FA}.Release|x64.Build.0 = Release|x64
+		{06EC4985-0514-463F-8088-01CDDED539FA}.Release|x86.ActiveCfg = Release|Win32
+		{06EC4985-0514-463F-8088-01CDDED539FA}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {18CA275D-3C09-4202-A27D-D0B0044A5A4E}
+	EndGlobalSection
+EndGlobal
