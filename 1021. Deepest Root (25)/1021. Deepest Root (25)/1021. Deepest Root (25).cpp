@@ -7,14 +7,14 @@ const int maxn = 10001;
 int n,cou;
 bool isf[maxn] = { false };
 int father[maxn];
-void Union(int a, int b) {
-	int fa = father[a];
-	int fb = father[b];
-	if (fa!=fb)
-	{
-		father[b] = fa;
-	}
-}
+//void Union(int a, int b) {
+//	int fa = father[a];
+//	int fb = father[b];
+//	if (fa!=fb)
+//	{
+//		father[b] = fa;
+//	}
+//}Unionº¯Êý³ö´í
 int findfather(int a) {
 	if (father[a]==a)
 	{
@@ -23,6 +23,14 @@ int findfather(int a) {
 	int F = findfather(father[a]);
 	father[a] = F;
 	return F;
+}
+void Union(int a, int b) {
+	int fa = findfather(a);
+	int fb = findfather(b);
+	if (fa!=fb)
+	{
+		father[fa] = fb;
+	}
 }
 bool istree() {
 	cou = 0;
@@ -121,6 +129,7 @@ int main() {
 		DFS(1, 1, true);
 		set<int> tmp=ans;
 		init();
+		vis[*ans.begin()] = true;
 		DFS(*ans.begin(), 1, true);
 		for (set<int>::iterator it = tmp.begin(); it !=tmp.end() ; it++)
 		{
